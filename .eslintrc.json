@@ -1,0 +1,123 @@
+{
+  "ignorePatterns": ["**/*.d.ts", "**/node_modules", "**/__tests__/**", "**/tests/**", "build/**/*", "dist/**/*"],
+  "settings": {
+    "import/extensions": [".js", ".ts"],
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": "./tsconfig.json"
+      },
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+  "extends": [
+    "plugin:import/typescript",
+    "plugin:@typescript-eslint/recommended",
+    "airbnb-base",
+    "airbnb-typescript/base",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "eslint:recommended",
+    "plugin:unicorn/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "project": ["./tsconfig.json"],
+    "ecmaVersion": 2020,
+    "tsconfigRootDir": ".",
+    "sourceType": "module"
+  },
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "unicorn", "prettier"],
+  "rules": {
+    "class-methods-use-this": "off",
+    "no-param-reassign": "off",
+    "object-curly-newline": "off",
+    "unicorn/prefer-top-level-await": "off",
+    "@typescript-eslint/no-redundant-type-constituents": "off",
+    "@typescript-eslint/no-param-reassign": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/restrict-plus-operands": "off",
+    "@typescript-eslint/no-unnecessary-type-assertion": "off",
+    "@typescript-eslint/await-thenable": "off",
+    "@typescript-eslint/no-explicit-any": ["off", { "ignoreRestArgs": true }],
+    "@typescript-eslint/require-await": "off",
+    "import/no-unresolved": "off",
+    "@typescript-eslint/semi": "off",
+    "@typescript-eslint/no-unnecessary-type-constraint": "off",
+    "implicit-arrow-linebreak": "off",
+    "max-len": ["error", 200],
+    "no-continue": "off",
+    "no-console": "off",
+    "no-restricted-syntax": "off",
+    "import/no-extraneous-dependencies": "off",
+    "no-plusplus": "off",
+    "@typescript-eslint/indent": "off",
+    "@typescript-eslint/no-redeclare": "off",
+    "import/no-relative-packages": "off",
+    "import/prefer-default-export": "off",
+    "import/no-cycle": "off",
+    "@typescript-eslint/no-unsafe-call": "off",
+    "no-unused-expressions": ["error"],
+    "@typescript-eslint/no-unsafe-member-access": "off",
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/no-unsafe-enum-comparison": "off",
+    "@typescript-eslint/no-unsafe-argument": "off",
+    "@typescript-eslint/no-unsafe-return": "off",
+    "@typescript-eslint/no-throw-literal": "off",
+    "@typescript-eslint/lines-between-class-members": "off",
+    "unicorn/prefer-module": "off",
+    "unicorn/switch-case-braces": "off",
+    "unicorn/no-negated-condition": "off",
+    "unicorn/prefer-logical-operator-over-ternary": "off",
+    "unicorn/prefer-at": "off",
+    "unicorn/prefer-string-replace-all": "off",
+    "unicorn/no-array-reduce": "off",
+    "unicorn/prefer-ternary": "off",
+    "unicorn/no-null": "off",
+    "unicorn/prevent-abbreviations": [
+      "error",
+      {
+        "allowList": {
+          "params": true,
+          "Params": true,
+          "args": true,
+          "prod": true,
+          "dev": true,
+          "req": true,
+          "res": true,
+          "err": true
+        }
+      }
+    ],
+    "function-paren-newline": "off",
+    "newline-per-chained-call": "off",
+    "operator-linebreak": "off",
+    "no-underscore-dangle": [
+      "error",
+      {
+        "allow": ["_source", "_friendlyMessage", "arguments_", "_createdAt", "_updatedAt", "__allowedUsers", "_def"]
+      }
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "semi": false,
+        "trailingComma": "all",
+        "singleQuote": true,
+        "printWidth": 200,
+        "tabWidth": 2,
+        "useTabs": false,
+        "arrowParens": "always",
+        "proseWrap": "never",
+        "bracketSpacing": true,
+        "editorconfig": true
+      }
+    ]
+  }
+}

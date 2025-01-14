@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "declaration": true,
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "utils/*": ["packages/utils/*"],
+      "utils": ["packages/utils"],
+      "redis-manager/*": ["packages/redis-manager/*"],
+      "redis-manager": ["packages/redis-manager"],
+      "sms-manager/*": ["packages/sms-manager/*"],
+      "sms-manager": ["packages/sms-manager"],
+      "config/*": ["packages/config/*"],
+      "config": ["packages/config"],
+      "*": ["node_modules/*"]
+    },
+    "types": ["node"],
+    "outDir": "dist",
+    "typeRoots": ["./types", "node_modules/@types"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+  "exclude": ["**/node_modules/*", "**/dist/**", "**/dependencies/**", "test/*", "**/__tests__/**"],
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  }
+}

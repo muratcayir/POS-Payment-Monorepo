@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/Middleware",
+    "sourceMap": false
+  },
+  "references": [
+    {
+      "path": "../../packages/utils"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/Car",
+    "sourceMap": false
+  },
+  "references": [
+    {
+      "path": "../../packages/utils"
+    }
+  ],
+  "include": ["src/**/*"]
+}

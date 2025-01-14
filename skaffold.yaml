@@ -1,0 +1,63 @@
+apiVersion: skaffold/v4beta11
+kind: Config
+metadata:
+  name: taxi-pos
+build:
+  local:
+    push: false
+  artifacts:
+    - image: taxi-pos/car
+      context: ./classes/Car
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
+    - image: taxi-pos/emergency
+      context: ./classes/Emergency
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
+    - image: taxi-pos/middleware
+      context: ./classes/Middleware
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
+    - image: taxi-pos/otp-authenticator
+      context: ./classes/OtpAuthenticator
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
+    - image: taxi-pos/payment
+      context: ./classes/Payment
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
+    - image: taxi-pos/user
+      context: ./classes/User
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
+manifests:
+  rawYaml:
+    - ./packages/infra/k8s/*
+    - ./packages/infra/k8s-dev/*
+    - ./packages/infra/k8s-prod/*
+deploy:
+  kubectl: {}

@@ -1,0 +1,22 @@
+{
+  "name": "sms-manager",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc ",
+    "clean": "rimraf  --force ../../dependencies/**/*.tsbuildinfo ../../dependencies/**/*.d.ts ../../dependencies/*/*/*.d.ts",
+    "lint": "eslint . --ext .ts,.tsx"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.11.0",
+    "@typescript-eslint/parser": "^8.11.0"
+  }
+}

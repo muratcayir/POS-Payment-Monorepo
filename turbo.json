@@ -1,0 +1,23 @@
+{
+  "tasks": {
+    "clean": {
+      "dependsOn": [],
+      "outputs": []
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", "dependencies/**"]
+    },
+    "lint": {
+      "outputs": []
+    },
+    "test": {
+      "dependsOn": ["build"],
+      "outputs": []
+    },
+    "coverage": {
+      "dependsOn": ["^test"],
+      "outputs": ["coverage/**"]
+    }
+  }
+}

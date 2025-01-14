@@ -1,0 +1,146 @@
+version: '3.9'
+
+services:
+  car:
+    build:
+      context: .
+      dockerfile: ./classes/Car/Dockerfile
+    ports:
+      - '3001:3000'
+    env_file:
+      - ./classes/Car/.env
+    depends_on:
+      - redis
+      - mssql
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+
+  middleware:
+    build:
+      context: .
+      dockerfile: ./classes/Middleware/Dockerfile
+    ports:
+      - '3002:3000'
+    env_file:
+      - ./classes/Middleware/.env
+    depends_on:
+      - redis
+      - mssql
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+
+  otp-authenticator:
+    build:
+      context: .
+      dockerfile: ./classes/OtpAuthenticator/Dockerfile
+    ports:
+      - '3003:3000'
+    env_file:
+      - ./classes/OtpAuthenticator/.env
+    depends_on:
+      - redis
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '0.30'
+          memory: 256M
+
+  payment:
+    build:
+      context: .
+      dockerfile: ./classes/Payment/Dockerfile
+    ports:
+      - '3004:3000'
+    env_file:
+      - ./classes/Payment/.env
+    depends_on:
+      - redis
+      - mssql
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+
+  user:
+    build:
+      context: .
+      dockerfile: ./classes/User/Dockerfile
+    ports:
+      - '3005:3000'
+    env_file:
+      - ./classes/User/.env
+    depends_on:
+      - redis
+      - mssql
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+
+  emergency:
+    build:
+      context: .
+      dockerfile: ./classes/Emergency/Dockerfile
+    ports:
+      - '3006:3000'
+    env_file:
+      - ./classes/Emergency/.env
+    depends_on:
+      - redis
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '0.30'
+          memory: 256M
+
+  redis:
+    image: 'redis:alpine'
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '0.30'
+          memory: 256M
+
+  mssql:
+    image: 'mcr.microsoft.com/mssql/server:2019-latest'
+    environment:
+      ACCEPT_EULA: 'Y'
+      SA_PASSWORD: '${MSSQL_SA_PASSWORD}'
+    ports:
+      - '1433:1433'
+    volumes:
+      - mssql_data:/var/opt/mssql
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '1.00'
+          memory: 2G
+
+volumes:
+  redis_data:
+  mssql_data:
+
+networks:
+  default:
+    driver: bridge

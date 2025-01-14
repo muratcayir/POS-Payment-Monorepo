@@ -1,0 +1,14 @@
+{
+  "name": "utils",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc ",
+    "clean": "rimraf  --force ../../dependencies/**/*.tsbuildinfo ../../dependencies/**/*.d.ts ../../dependencies/*/*/*.d.ts",
+    "lint": "eslint . --ext .ts,.tsx"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
